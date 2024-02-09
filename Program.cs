@@ -6,6 +6,7 @@ namespace Bank_Account
 {
     class Program
     {
+        static List<Account> accountList = new List<Account>();
         static void Main(string[] args)
         {
             string userOption = GetUserOption();
@@ -18,7 +19,7 @@ namespace Bank_Account
                         //ListAccounts();
                         break;
                     case "2":
-                        //AddNewAccount();
+                        AddNewAccount();
                         break;
                     case "3":
                         //Transfer();
@@ -44,11 +45,46 @@ namespace Bank_Account
             Console.WriteLine();
         }
 
+        private static void AddNewAccount()
+        {
+            Console.WriteLine(" | You chose add new account | ");
+            Console.WriteLine();
+
+            Console.WriteLine("Enter 1 to Fisical Person or 2 to Legal Person: ");
+            int userEntryAccountType = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the client's name: ");
+            string userEntryName = Console.ReadLine();
+
+            Console.WriteLine("Enter the inicial balance: ");
+            double userEntryBalance = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the credit: ");
+            double userEntryCredit = double.Parse(Console.ReadLine());
+
+            Account newAccount = new Account(accountType: (AccountType)userEntryAccountType,
+                                            balance: userEntryBalance, 
+                                            credit: userEntryCredit,
+                                            name: userEntryName);
+            
+            accountList.Add(newAccount);
+
+            Console.WriteLine();
+            Console.WriteLine("You just added a new account successfully!");
+            Console.WriteLine();   
+
+            Console.WriteLine("Check the new account >> \n" + newAccount);
+            Console.ReadLine();
+        }
+
         private static string GetUserOption()
         {
             Console.WriteLine();
             Console.WriteLine("Your account is initializing...");
-            Console.WriteLine("Enter the following options wanted:");
+            Console.WriteLine();
+
+            Console.WriteLine("Enter one of the following options wanted:");
+            Console.WriteLine();
 
             Console.WriteLine("1 - List all the accounts");
             Console.WriteLine("2 - Add new account");
