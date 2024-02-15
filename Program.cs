@@ -16,7 +16,7 @@ namespace Bank_Account
                 switch (userOption)
                 {
                     case "1":
-                        //ListAccounts();
+                        ListAccounts();
                         break;
                     case "2":
                         AddNewAccount();
@@ -47,19 +47,19 @@ namespace Bank_Account
 
         private static void AddNewAccount()
         {
-            Console.WriteLine(" | You chose add new account | ");
+            Console.WriteLine(" | You chose >> Add new account | ");
             Console.WriteLine();
 
-            Console.WriteLine("Enter 1 to Fisical Person or 2 to Legal Person: ");
+            Console.Write("Enter 1 to Fisical Person or 2 to Legal Person: ");
             int userEntryAccountType = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the client's name: ");
+            Console.Write("Enter the client's name: ");
             string userEntryName = Console.ReadLine();
 
-            Console.WriteLine("Enter the inicial balance: ");
+            Console.Write("Enter the inicial balance: ");
             double userEntryBalance = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the credit: ");
+            Console.Write("Enter the credit: ");
             double userEntryCredit = double.Parse(Console.ReadLine());
 
             Account newAccount = new Account(accountType: (AccountType)userEntryAccountType,
@@ -74,6 +74,37 @@ namespace Bank_Account
             Console.WriteLine();   
 
             Console.WriteLine("Check the new account >> \n" + newAccount);
+            Console.WriteLine();
+
+            Console.WriteLine("Enter to continue...");
+            Console.ReadLine();
+        }
+
+        private static void ListAccounts()
+        {
+            Console.WriteLine(" | You chose >> List all accounts | ");
+            Console.WriteLine();
+
+            if (accountList.Count == 0) 
+            {
+                Console.WriteLine("Zero accounts registered.");
+                Console.WriteLine();
+                
+                Console.WriteLine("Enter to continue...");
+                Console.ReadLine();
+
+                return;
+            }
+
+            for (int i = 0; i < accountList.Count; i++)
+            {
+                Account account = accountList[i];
+                Console.Write($"#{i + 1} - ");
+                Console.WriteLine(account);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Enter to continue...");
             Console.ReadLine();
         }
 

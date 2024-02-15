@@ -55,7 +55,7 @@ namespace Bank_Account.Class
             retorno += "Type of the account: " + AccountType + " | ";
             retorno += "Name: " + Name + " | ";
             retorno += "Balance: $" + Balance + ",00 | ";
-            retorno += "Credit: " + Credit;
+            retorno += "Credit: $" + Credit + ",00";
 
             return retorno;
         }
