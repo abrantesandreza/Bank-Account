@@ -29,7 +29,8 @@ namespace Bank_Account.Class
             }
 
             Balance -= withdrawalAmount;
-            Console.WriteLine($"Everything is well! You're current balance amount, {Name}, is ${Balance}.");
+            Console.WriteLine();
+            Console.WriteLine($"You're current balance amount is ${Balance},00.");
 
             return true;
         }
@@ -38,7 +39,8 @@ namespace Bank_Account.Class
         {
             Balance += depositAmount;
 
-            Console.WriteLine($"Everything is well! You're current balance amount,{Name} , is ${Balance}.");
+            Console.WriteLine();
+            Console.WriteLine($"You're current balance amount is ${Balance},00.");
         }
 
         public void Transfer(double transferAmount, Account destinationAccount)

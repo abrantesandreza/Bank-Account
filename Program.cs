@@ -25,10 +25,10 @@ namespace Bank_Account
                         //Transfer();
                         break;
                     case "4":
-                        //WithDraw();
+                        WithDraw();
                         break;
                     case "5":
-                        //Deposit();
+                        Deposit();
                         break;
                     case "C":
                         Console.Clear();
@@ -43,6 +43,36 @@ namespace Bank_Account
 
             Console.WriteLine("Thank you for using our services!");
             Console.WriteLine();
+        }
+
+        private static void Deposit()
+        {
+            Console.Write("Enter the number of the account: ");
+            int accountNumber = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the amount to be deposited: ");
+            double depositAmount = double.Parse(Console.ReadLine());
+
+            accountList[accountNumber - 1].Deposit(depositAmount);
+
+            Console.WriteLine();
+            Console.WriteLine("Your deposit was successfully executed!");
+            Console.ReadLine();
+        }
+
+        private static void WithDraw()
+        {
+            Console.Write("Enter the number of the account: ");
+            int accountNumber = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the amount to be withdrawed: ");
+            double withdrawAmount = double.Parse(Console.ReadLine());
+
+            accountList[accountNumber - 1].Withdraw(withdrawAmount);
+
+            Console.WriteLine();
+            Console.WriteLine("Your withdraw was successfully executed!");
+            Console.ReadLine();
         }
 
         private static void AddNewAccount()
@@ -63,7 +93,7 @@ namespace Bank_Account
             double userEntryCredit = double.Parse(Console.ReadLine());
 
             Account newAccount = new Account(accountType: (AccountType)userEntryAccountType,
-                                            balance: userEntryBalance, 
+                                            balance: userEntryBalance,
                                             credit: userEntryCredit,
                                             name: userEntryName);
             
@@ -71,9 +101,9 @@ namespace Bank_Account
 
             Console.WriteLine();
             Console.WriteLine("You just added a new account successfully!");
-            Console.WriteLine();   
+            Console.WriteLine();
 
-            Console.WriteLine("Check the new account >> \n" + newAccount);
+            Console.WriteLine("New account >> \n" + newAccount);
             Console.WriteLine();
 
             Console.WriteLine("Enter to continue...");
@@ -121,6 +151,7 @@ namespace Bank_Account
             Console.WriteLine("2 - Add new account");
             Console.WriteLine("3 - Transfer");
             Console.WriteLine("4 - Withdraw");
+            Console.WriteLine("5 - Deposit");
             Console.WriteLine("C - Clear screen");
             Console.WriteLine("X - Close program");
             Console.WriteLine();
@@ -130,6 +161,5 @@ namespace Bank_Account
 
             return userOption;
         }
-
     }
 }
