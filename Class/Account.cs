@@ -25,12 +25,29 @@ namespace Bank_Account.Class
         {
             if (Balance - withdrawalAmount < (Credit *-1))
             {
-                Console.WriteLine("Insufficient funds!");
+                Console.WriteLine();
+                Console.WriteLine("We're sorry! You have insufficient funds!");
+
+                Console.WriteLine();
+                Console.WriteLine("Enter to continue...");
+                Console.ReadLine();
+
+                return false;
             }
 
-            Balance -= withdrawalAmount;
+            double newBalance = Balance -= withdrawalAmount;
+            
+            if (newBalance < 0)
+            {
+                Credit += newBalance;
+            }
+
             Console.WriteLine();
             Console.WriteLine($"You're current balance amount is ${Balance},00.");
+
+            Console.WriteLine();
+            Console.WriteLine("Your withdraw was successfully executed!");
+            Console.ReadLine();
 
             return true;
         }

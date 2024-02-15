@@ -22,7 +22,7 @@ namespace Bank_Account
                         AddNewAccount();
                         break;
                     case "3":
-                        //Transfer();
+                        Transfer();
                         break;
                     case "4":
                         WithDraw();
@@ -43,6 +43,20 @@ namespace Bank_Account
 
             Console.WriteLine("Thank you for using our services!");
             Console.WriteLine();
+        }
+
+        private static void Transfer()
+        {
+            Console.Write("Enter the number of the source account: ");
+            int indexSourceAccount = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the number of the destination account: ");
+            int indexDestinationAccount = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the amount to be transfered: ");
+            double transferAmount = double.Parse(Console.ReadLine());
+
+            accountList[indexSourceAccount - 1].Transfer(transferAmount, accountList[indexDestinationAccount - 1]);
         }
 
         private static void Deposit()
@@ -69,10 +83,6 @@ namespace Bank_Account
             double withdrawAmount = double.Parse(Console.ReadLine());
 
             accountList[accountNumber - 1].Withdraw(withdrawAmount);
-
-            Console.WriteLine();
-            Console.WriteLine("Your withdraw was successfully executed!");
-            Console.ReadLine();
         }
 
         private static void AddNewAccount()
