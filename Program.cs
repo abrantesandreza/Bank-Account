@@ -47,6 +47,9 @@ namespace Bank_Account
 
         private static void Transfer()
         {
+            Console.WriteLine(" | You chose >> Transfer | ");
+            Console.WriteLine();
+
             Console.Write("Enter the number of the source account: ");
             int indexSourceAccount = int.Parse(Console.ReadLine());
 
@@ -61,6 +64,9 @@ namespace Bank_Account
 
         private static void Deposit()
         {
+            Console.WriteLine(" | You chose >> Deposit | ");
+            Console.WriteLine();
+
             Console.Write("Enter the number of the account: ");
             int accountNumber = int.Parse(Console.ReadLine());
 
@@ -76,6 +82,9 @@ namespace Bank_Account
 
         private static void WithDraw()
         {
+            Console.WriteLine(" | You chose >> WithDraw | ");
+            Console.WriteLine();
+
             Console.Write("Enter the number of the account: ");
             int accountNumber = int.Parse(Console.ReadLine());
 
@@ -151,7 +160,7 @@ namespace Bank_Account
         private static string GetUserOption()
         {
             Console.WriteLine();
-            Console.WriteLine("Your account is initializing...");
+            Console.WriteLine("Welcome to your home account!");
             Console.WriteLine();
 
             Console.WriteLine("Enter one of the following options wanted:");

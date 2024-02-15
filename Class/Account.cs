@@ -23,33 +23,48 @@ namespace Bank_Account.Class
 
         public bool Withdraw(double withdrawalAmount)
         {
-            if (Balance - withdrawalAmount < (Credit *-1))
+            if (Balance < withdrawalAmount)
             {
-                Console.WriteLine();
-                Console.WriteLine("We're sorry! You have insufficient funds!");
+                double remainingAmount = withdrawalAmount - Balance;
+
+                if (remainingAmount > Credit)
+                {
+                    Console.WriteLine("We're sorry! You have insufficient funds!");
+
+                    Console.WriteLine();
+                    Console.WriteLine("Enter to continue...");
+                    Console.ReadLine();
+
+                    return false;
+                }
+                else
+                {
+                    Balance -= withdrawalAmount;
+                    Credit -= remainingAmount;
+
+                    Console.WriteLine();
+                    Console.WriteLine($"You're current BALANCE amount is ${Balance},00.");
+                    Console.WriteLine($"You're current CREDIT amount is ${Credit},00.");
+
+                    Console.WriteLine();
+                    Console.WriteLine("Enter to continue...");
+                    Console.ReadLine();
+
+                    return true;
+                }
+            }
+            else
+            {
+                Balance -= withdrawalAmount;
+
+                Console.WriteLine($"You're current BALANCE amount is ${Balance},00.");
 
                 Console.WriteLine();
                 Console.WriteLine("Enter to continue...");
                 Console.ReadLine();
 
-                return false;
+                return true;
             }
-
-            double newBalance = Balance -= withdrawalAmount;
-            
-            if (newBalance < 0)
-            {
-                Credit += newBalance;
-            }
-
-            Console.WriteLine();
-            Console.WriteLine($"You're current balance amount is ${Balance},00.");
-
-            Console.WriteLine();
-            Console.WriteLine("Your withdraw was successfully executed!");
-            Console.ReadLine();
-
-            return true;
         }
 
         public void Deposit(double depositAmount)
